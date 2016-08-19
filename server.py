@@ -24,8 +24,8 @@ class Server(object):
             for idx, rec in enumerate(datamodel.variant.getPysamVariants(
                     reference_name, '1', start, end)):
                 variant = datamodel.variant.convertVariant(rec, None)
-                if idx > 5: break
                 yield json_format.MessageToJson(variant)
+            print(idx)
 
         return streamer(reference, start, end)
     variantsearch._cp_config = {'response.stream': True}
